@@ -1,0 +1,30 @@
+{
+  "name": "node-red-contrib-timecheck",
+  "version": "1.0.0",
+  "description": "A node that compares the current time to the given time.",
+  "dependencies": {},
+  "keywords": [
+    "node-red",
+    "time",
+    "compare"
+  ],
+  "node-red": {
+    "nodes": {
+      "sample": "timecheck/timecheck.js"
+    }
+  },
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorne/node-red-contrib-timecheck.git"
+  },
+  "author": "Jorne Roefs",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/jorne/node-red-contrib-timecheck/issues"
+  },
+  "homepage": "https://github.com/jorne/node-red-contrib-timecheck#readme"
+}
