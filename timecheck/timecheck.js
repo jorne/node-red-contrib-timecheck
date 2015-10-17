@@ -12,7 +12,7 @@ module.exports = function(RED) {
     var hours = parseInt(time[0]),
         minutes = parseInt(time[1]);
 
-    if (0 < hours && hours < 24 && 0 < minutes && minutes < 60) {
+    if (0 <= hours && hours < 24 && 0 <= minutes && minutes < 60) {
       checktime.setHours(hours);
       checktime.setMinutes(minutes);
     } else {
