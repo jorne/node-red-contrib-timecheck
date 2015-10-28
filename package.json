@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-timecheck",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A node that compares the current time to the given time.",
   "dependencies": {},
   "keywords": [
@@ -12,10 +12,6 @@
     "nodes": {
       "sample": "timecheck/timecheck.js"
     }
-  },
-  "main": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

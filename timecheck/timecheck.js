@@ -2,8 +2,7 @@ module.exports = function(RED) {
   function TimeCheckNode(config) {
     RED.nodes.createNode(this,config);
 
-    var time = config.time.split(':'),
-        checktime = new Date();
+    var time = config.time.split(':');
 
     if (time.length != 2) {
       this.error("Time format must be HH:mm");
@@ -12,20 +11,18 @@ module.exports = function(RED) {
     var hours = parseInt(time[0]),
         minutes = parseInt(time[1]);
 
-    if (0 <= hours && hours < 24 && 0 <= minutes && minutes < 60) {
-      checktime.setHours(hours);
-      checktime.setMinutes(minutes);
-    } else {
+    if (hours > 23 || minutes > 59) {
       this.error("Given time is not within valid range");
     }
-
-    this.checktime = checktime;
 
     var node = this;
 
     this.on('input', function(msg) {
       var now = new Date(),
-          checktime = node.checktime;
+          checktime = new Date();
+
+          checktime.setHours(hours);
+          checktime.setMinutes(minutes);
 
       if (now < checktime) {
         node.send([null, msg]);
