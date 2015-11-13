@@ -1,7 +1,7 @@
 <script type="text/javascript">
 RED.nodes.registerType('timecheck',{
   category: 'function',
-  color: '#E7E7AE',
+  color: '#E2D96E',
   defaults: {
     name: {value: ''},
     time: {
@@ -12,7 +12,7 @@ RED.nodes.registerType('timecheck',{
   },
   inputs: 1,
   outputs: 2,
-  icon: 'function.png',
+  icon: 'switch.png',
   label: function() {
     return this.name || 'Is it ' + this.time + ' yet? Y/N';
   }

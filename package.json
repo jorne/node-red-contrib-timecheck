@@ -26,5 +26,11 @@
   "bugs": {
     "url": "https://github.com/jorne/node-red-contrib-timecheck/issues"
   },
-  "homepage": "https://github.com/jorne/node-red-contrib-timecheck#readme"
+  "homepage": "https://github.com/jorne/node-red-contrib-timecheck#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-licenser": "^1.0.2",
+    "istanbul": "^0.4.0",
+    "should": "^7.1.1"
+  }
 }

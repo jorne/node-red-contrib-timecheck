@@ -1,38 +1,48 @@
+/**
+* timecheck node
+*
+* Copyright 2015, Jorne Roefs.
+* All rights reserved.
+*
+*/
+
 module.exports = function(RED) {
-  function TimeCheckNode(config) {
-    RED.nodes.createNode(this,config);
+  'use strict';
+  function TimecheckNode(n) {
+    RED.nodes.createNode(this, n);
 
-    var time = config.time.split(':'),
-        checktime = new Date();
+    var _this = this;
+    var time = n.time || '12:00';
+    var timeParts;
+    var hours = 0;
+    var minutes = 0;
 
-    if (time.length != 2) {
-      this.error("Time format must be HH:mm");
+    try {
+      timeParts = n.time.split(':');
+      hours = parseInt(timeParts[0]);
+      minutes = parseInt(timeParts[1]);
+
+      if (hours > 23 || minutes > 59) {
+        throw new Error();
+      }
+    } catch (e) {
+      this.error('Invalid time given.');
     }
-
-    var hours = parseInt(time[0]),
-        minutes = parseInt(time[1]);
-
-    if (0 <= hours && hours < 24 && 0 <= minutes && minutes < 60) {
-      checktime.setHours(hours);
-      checktime.setMinutes(minutes);
-    } else {
-      this.error("Given time is not within valid range");
-    }
-
-    this.checktime = checktime;
-
-    var node = this;
 
     this.on('input', function(msg) {
-      var now = new Date(),
-          checktime = node.checktime;
+      var now = new Date();
+      var checktime = new Date();
+
+      checktime.setHours(hours);
+      checktime.setMinutes(minutes);
 
       if (now < checktime) {
-        node.send([null, msg]);
+        _this.send([null, msg]);
       } else {
-        node.send([msg, null]);
+        _this.send([msg, null]);
       }
     });
   }
-  RED.nodes.registerType('timecheck', TimeCheckNode);
+
+  RED.nodes.registerType('timecheck', TimecheckNode);
 };
